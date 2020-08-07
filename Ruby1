@@ -1,9 +1,17 @@
-str = gets
+str = "aaabccd"
 l= str.length()
- for i in (0...l-1) 
-    if (str[i] == str[i+1])
+t=1
+while (t==1)
+  t=0
+  for i in (0...l-1) 
+    if (str[i] == str[i+1] && str[i] != nil)
       str.slice!(i)
       str.slice!(i)
+      t=1
     end
- end
+  end
+end
+if str.length() == 0
+  puts "empty string"
+end
 puts str
