@@ -1,14 +1,9 @@
 str = gets
 l= str.length()
-bool = true
-while(bool)
-  bool = false
  for i in (0...l-1) 
     if (str[i] == str[i+1])
       str.slice!(i)
       str.slice!(i)
-      bool = true
     end
  end
-end
 puts str
