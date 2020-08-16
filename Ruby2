@@ -1,0 +1,11 @@
+d = 1
+count = 0
+arr = [1,2,3,4]
+for i in (0...4)
+  for j in (0...4)
+    if arr[i]-arr[j] == d
+      count += 1
+    end
+  end
+end
+p count
