@@ -1,0 +1,93 @@
+
+
+
+def vowel_count(digit)
+l_s = digit.length()
+count = 0
+vowels = ['a','e','i','o','u']
+l_v= vowels.length()
+for i in (0..l_s-1)
+  for j in (0..l_v)
+    if digit[i] == vowels[j]
+      count+=1
+    end
+  end
+end
+return count
+end
+
+def single_dig (single)
+single_digit = ["zero", "one", "two","three","four","five","six","seven","eight","nine"]
+l =single_digit.length()
+single_str = single_digit[single]
+return single_str
+end
+
+
+def tens_dig(tens)
+tens_digit = ["ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"]
+r = tens%10
+tens_str = tens_digit[r]
+return tens_str
+end
+
+def double_dig(double)
+double_digit = ["twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"]
+d = double/10
+r = double%10
+double_str = double_digit[d-2]
+if r == 0
+  single_str = nil
+else
+  single_str = single_dig(r)
+end  
+two_digit= double_str + single_str 
+ return two_digit
+end
+
+def pairs(s,count,l) 
+ total = 0
+
+  for p in (0...l)
+    for q in (p+1...l)
+      if s[p]+s[q] == count
+       a = p
+       b = q
+       total += 1
+     end
+   end
+  end  
+ return total
+end
+
+s = [7,4,2]
+c = Array.new()
+l=s.length()
+for k in (0..l-1)
+  if s[k]<10
+    str = single_dig(s[k])
+    p str
+    c[k] = vowel_count(str)
+    p c[k]
+  end
+  if s[k]>9 && s[k]<20
+    str = tens_dig(s[k])
+    p str
+    c[k] = vowel_count(str)
+    p c[k]
+  end
+  if s[k]>19 
+    str = double_dig(s[k])
+    p str
+    c[k] = vowel_count(str)
+    p c[k]
+  end  
+end
+ count = 0
+ l_c = c.length()
+ for t in (0..l_c-1)
+   count+=c[t]
+ end
+ p count
+ total = pairs(s,count,l)
+ p total
